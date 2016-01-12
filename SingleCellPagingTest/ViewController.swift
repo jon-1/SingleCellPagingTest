@@ -44,13 +44,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.contentOffset = CGPointMake(0, 0)
         
        // let decelerationRate = UIScrollViewDecelerationRateFast + (UIScrollViewDecelerationRateNormal - UIScrollViewDecelerationRateFast) - 80;
-        
-
-        
-       // collectionView.setValue(NSValue.init(CGSize: CGSizeMake(decelerationRate, decelerationRate)), forKey: "_decelerationFactor")
+        // collectionView.setValue(NSValue.init(CGSize: CGSizeMake(decelerationRate, decelerationRate)), forKey: "_decelerationFactor")
            print(collectionView.decelerationRate)
-        
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,11 +64,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell : CustomCell = self.collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! CustomCell
         cell.imageView.frame = cell.bounds
-
-       // if indexPath.row == 0 || indexPath.row == 29 {
-       //     cell.backgroundColor = UIColor.clearColor()
-      //      cell.focusable = false
-      //  } else
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = UIColor.redColor()
                     cell.imageView.image = UIImage(named:"pizzahut200px")
@@ -90,21 +81,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didUpdateFocusInContext context: UICollectionViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-
-    }
     func indexPathForPreferredFocusedViewInCollectionView(collectionView: UICollectionView) -> NSIndexPath? {
-        print("Hi")
+
         return collectionView.indexPathsForVisibleItems().last
     }
 
-
-    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
-        scrollView.contentOffset.y += 100
-        scrollView.setContentOffset(scrollView.contentOffset, animated: true)
-        scrollView.contentOffset.y -= 100
-        scrollView.setContentOffset(scrollView.contentOffset, animated: true)
-    }
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let focusedCell = UIScreen.mainScreen().focusedView as! CustomCell
         if let jPath = collectionView.indexPathForCell(focusedCell) {

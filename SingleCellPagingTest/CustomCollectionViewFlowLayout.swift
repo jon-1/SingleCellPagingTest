@@ -30,7 +30,7 @@ class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
         let targetRect : CGRect = CGRectMake(0, proposedContentOffset.y, CGRectGetWidth(self.collectionView!.bounds), CGRectGetHeight(self.collectionView!.bounds))
         let ar  = super.layoutAttributesForElementsInRect(targetRect)!
         
-        for var lAttributes : UICollectionViewLayoutAttributes in ar {
+        for lAttributes : UICollectionViewLayoutAttributes in ar {
             let itemOffset : CGFloat = lAttributes.frame.origin.y
             if abs(itemOffset - verticalOffset) < abs(offsetAdjustment) {
                 offsetAdjustment = itemOffset - verticalOffset
@@ -42,22 +42,4 @@ class CustomCollectionViewFlowLayout: UICollectionViewFlowLayout {
         return returnPoint
     }
     
-//    - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity
-//    {
-//    CGFloat offsetAdjustment = MAXFLOAT;
-//    CGFloat horizontalOffset = proposedContentOffset.x + 5;
-//    
-//    CGRect targetRect = CGRectMake(proposedContentOffset.x, 0, self.collectionView.bounds.size.width, self.collectionView.bounds.size.height);
-//    
-//    NSArray *array = [super layoutAttributesForElementsInRect:targetRect];
-//    
-//    for (UICollectionViewLayoutAttributes *layoutAttributes in array) {
-//    CGFloat itemOffset = layoutAttributes.frame.origin.x;
-//    if (ABS(itemOffset - horizontalOffset) < ABS(offsetAdjustment)) {
-//    offsetAdjustment = itemOffset - horizontalOffset;
-//    }
-//    }
-//    
-//    return CGPointMake(proposedContentOffset.x + offsetAdjustment, proposedContentOffset.y);
-//    }
 }
